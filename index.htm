@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Renata | Meiriska Renata Br.Simanjuntak - Personal Blog & Culinary</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        batak: {
+                            red: '#9E2A2B',      // Merah Batak / Maroon Spice
+                            gold: '#D4AF37',     // Emas Gorga
+                            dark: '#121212',     // Hitam Arang
+                            copper: '#C86D51',   // Tembaga Alami
+                            terracotta: '#E07A5F',
+                            cream: '#FDFBF7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gorga-bg-pattern {
+            background-color: #121212;
+            background-image: radial-gradient(#d4af37 0.75px, transparent 0.75px), radial-gradient(#9e2a2b 0.75px, #121212 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.15;
+        }
+
+        .gorga-border {
+            border-image: linear-gradient(to right, #9E2A2B, #D4AF37, #9E2A2B) 1;
+        }
+
+        .glass-card {
+            background: rgba(26, 26, 26, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 109, 81, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9E2A2B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        /* Glow effects */
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(158, 42, 43, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-batak-dark text-batak-cream font-sans antialiased selection:bg-batak-red selection:text-white overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-batak-red via-batak-copper to-batak-gold p-[2px] flex items-center justify-center transition-transform group-hover:rotate-12">
+                        <div class="w-full h-full bg-batak-dark rounded-full flex items-center justify-center">
+                            <i class="fa-solid font-bold text-batak-gold text-lg">CR</i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-white tracking-wide block leading-none">CHEF RENATA</span>
+                        <span class="text-[10px] text-batak-gold tracking-widest uppercase font-semibold">Simanjuntak Culinary</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-batak-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-batak-gold hover:after:w-full after:transition-all">Beranda</a>
+                    <a href="#about" class="hover:text-batak-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-batak-gold hover:after:w-full after:transition-all">Tentang Chef</a>
+                    <a href="#recipes" class="hover:text-batak-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-batak-gold hover:after:w-full after:transition-all">Resep & Blog</a>
+                    <a href="#gorga-story" class="hover:text-batak-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-batak-gold hover:after:w-full after:transition-all">Filosofi Gorga</a>
+                </div>
+
+                <!-- Instagram Action Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://www.instagram.com/renatasimnjntk_?stkn=cDA2NDhidWx1ZzNm" target="_blank" rel="noopener noreferrer" 
+                       class="px-5 py-2.5 rounded-full bg-gradient-to-r from-batak-red via-purple-700 to-batak-gold text-white text-xs font-semibold tracking-wider hover:shadow-lg hover:shadow-batak-red/40 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>@renatasimnjntk_</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-batak-cream hover:text-batak-gold focus:outline-none">
+                        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-b border-batak-gold/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-batak-red/20 hover:text-batak-gold">Beranda</a>
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-batak-red/20 hover:text-batak-gold">Tentang Chef</a>
+            <a href="#recipes" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-batak-red/20 hover:text-batak-gold">Resep & Blog</a>
+            <a href="#gorga-story" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-batak-red/20 hover:text-batak-gold">Filosofi Gorga</a>
+            <a href="https://www.instagram.com/renatasimnjntk_?stkn=cDA2NDhidWx1ZzNm" target="_blank" rel="noopener noreferrer" 
+               class="mt-4 w-full py-2.5 rounded-full bg-gradient-to-r from-batak-red to-batak-gold text-white text-center text-sm font-semibold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-instagram text-lg"></i> Follow Instagram
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-24 pb-16 flex items-center justify-center overflow-hidden gorga-bg-pattern">
+        <!-- 3D Canvas Background Container -->
+        <div id="canvas-container" class="absolute inset-0 z-0 pointer-events-auto opacity-70"></div>
+
+        <!-- Overlay Radial Gradient -->
+        <div class="absolute inset-0 bg-radial-gradient from-transparent via-batak-dark/60 to-batak-dark pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Header -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left pt-6 lg:pt-0">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-batak-red/30 border border-batak-gold/40 text-batak-gold text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-batak-gold animate-ping"></span>
+                        Culinary Enthusiast & Recipe Creator
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                        Eksplorasi Rasa, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-batak-gold via-batak-copper to-batak-red">
+                            Tradisi & Tren
+                        </span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        Selamat datang di ruang rasa <span class="text-batak-gold font-semibold">Meiriska Renata Br.Simanjuntak</span>. Tempat di mana setiap olahan masakan kekinian dibalut kehangatan identitas budaya.
+                    </p>
+
+                    <!-- Interactive Badges / Stats -->
+                    <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-semibold">
+                        <div class="px-4 py-3 rounded-2xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-utensils text-batak-gold text-xl"></i>
+                            <div class="text-left">
+                                <p class="text-white font-bold text-sm">Hobi Memasak</p>
+                                <p class="text-gray-400 text-[11px]">Daily Cooking Habit</p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 py-3 rounded-2xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-fire text-batak-red text-xl"></i>
+                            <div class="text-left">
+                                <p class="text-white font-bold text-sm">Masakan Trending</p>
+                                <p class="text-gray-400 text-[11px]">Viral & Modern Recipes</p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 py-3 rounded-2xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-gem text-batak-copper text-xl"></i>
+                            <div class="text-left">
+                                <p class="text-white font-bold text-sm">Sentuhan Batak</p>
+                                <p class="text-gray-400 text-[11px]">Ornamen Gorga Ethnic</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#recipes" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-batak-red to-batak-copper text-white font-semibold shadow-lg shadow-batak-red/30 hover:scale-105 transition-all text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Jelajahi Resep</span>
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card border border-batak-gold/40 text-batak-cream font-semibold hover:border-batak-gold hover:bg-batak-gold/10 transition-all text-center flex items-center justify-center gap-2">
+                            <span>Kisah Chef Renata</span>
+                            <i class="fa-solid fa-arrow-down text-sm text-batak-gold"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Profile Photo Frame with Gorga Motif Border -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="relative w-72 h-80 sm:w-80 sm:h-96 group">
+                        
+                        <!-- Gorga Decorative Floating Elements -->
+                        <div class="absolute -top-6 -left-6 w-16 h-16 border-t-4 border-l-4 border-batak-gold rounded-tl-3xl z-20 pointer-events-none"></div>
+                        <div class="absolute -bottom-6 -right-6 w-16 h-16 border-b-4 border-r-4 border-batak-red rounded-br-3xl z-20 pointer-events-none"></div>
+
+                        <!-- Outer Glow Frame -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-batak-gold via-batak-red to-batak-copper rounded-3xl blur-md opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+
+                        <!-- Profile Image Container -->
+                        <div class="relative w-full h-full bg-batak-dark rounded-3xl overflow-hidden border-2 border-batak-gold/50 shadow-2xl">
+                            <img src="https://lh3.googleusercontent.com/d/119DXeEwiOhL5AZvpsK1qMjSNGJz_zWWy" 
+                                 alt="Meiriska Renata Br.Simanjuntak" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-700"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/121212/D4AF37?text=Chef+Renata';">
+                            
+                            <!-- Bottom Overlay Title -->
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6 text-center">
+                                <h2 class="font-serif font-bold text-xl text-white">Meiriska Renata</h2>
+                                <p class="text-xs text-batak-gold tracking-widest font-semibold uppercase mt-0.5">Br. Simanjuntak</p>
+                                <span class="mt-2 inline-block px-3 py-1 bg-batak-red/80 text-white text-[10px] rounded-full font-semibold">CHEF RENATA</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-4 -left-4 glass-card px-4 py-2 rounded-xl border border-batak-gold/40 shadow-xl flex items-center gap-2 z-30">
+                            <i class="fa-solid fa-utensils text-batak-gold"></i>
+                            <span class="text-xs font-semibold text-white">Passion & Habit</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gradient-to-b from-batak-dark via-[#1a1818] to-batak-dark relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="h-0.5 w-12 bg-batak-gold"></span>
+                    <span class="text-batak-gold text-xs font-bold uppercase tracking-widest">Kisah dibalik Gelar</span>
+                    <span class="h-0.5 w-12 bg-batak-gold"></span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">
+                    Kenapa Dipanggil <span class="text-batak-gold">"Chef Renata"</span>?
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">Perjalanan rasa dari hobi sederhana yang bertransformasi menjadi identitas utama.</p>
+            </div>
+
+            <!-- Quote & Story Card -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Story Narrative Card -->
+                <div class="lg:col-span-7 glass-card p-8 sm:p-10 rounded-3xl relative border border-batak-gold/30">
+                    <i class="fa-solid fa-quote-left text-5xl text-batak-red/30 absolute top-6 left-6"></i>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <h3 class="font-serif text-2xl font-bold text-batak-gold">
+                            "Saya yakin kalau saya memang bisa masak!"
+                        </h3>
+                        
+                        <p class="text-gray-300 leading-relaxed text-base italic border-l-2 border-batak-red pl-4">
+                            "Karena saya hobi memasak, dan suka mencoba masakan-masakan baru... seperti yang lagi trending-trending... dan hobby ini menjadi kebiasaan."
+                        </p>
+
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Demikian dari itu, teman-teman dan kerabat terdekat mulai memanggil saya <span class="text-batak-gold font-semibold">CHEF RENATA</span>. Nama julukan itu awal mulanya adalah kelakar hangat, namun oke saya terima dengan senyuman dan keyakinan penuh. Bagi saya, dapur adalah tempat bereksperimen, meracik bumbu, dan menyalurkan kreativitas tanpa batas.
+                        </p>
+
+                        <!-- Personal Info Grid -->
+                        <div class="pt-4 border-t border-gray-800 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                            <div>
+                                <span class="text-gray-500 block">Nama Lengkap</span>
+                                <span class="font-semibold text-white">Meiriska Renata Br. Simanjuntak</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 block">Panggilan Popular</span>
+                                <span class="font-semibold text-batak-gold">Chef Renata</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 block">Spesialisasi</span>
+                                <span class="font-semibold text-white">Trending & Ethnic Fusion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Highlights Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <div class="p-6 rounded-2xl glass-card border border-batak-red/30 hover:border-batak-gold transition duration-300 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-batak-red/20 flex items-center justify-center shrink-0 text-batak-gold text-2xl">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Eksplorasi Masakan Viral</h4>
+                            <p class="text-xs text-gray-400 mt-1">Selalu update mencoba menu kuliner yang sedang hangat diperbincangkan di media sosial dengan modifikasi kreasi sendiri.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-batak-gold/30 hover:border-batak-gold transition duration-300 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-batak-gold/20 flex items-center justify-center shrink-0 text-batak-gold text-2xl">
+                            <i class="fa-solid fa-pepper-hot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Cita Rasa Otentik Batak</h4>
+                            <p class="text-xs text-gray-400 mt-1">Menjaga tradisi rempah khas seperti Andaliman, kecombrang, dan kekayaan bumbu khas rumpun Simanjuntak.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-batak-copper/30 hover:border-batak-gold transition duration-300 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-batak-copper/20 flex items-center justify-center shrink-0 text-batak-gold text-2xl">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Memasak Sebagai Kebiasaan</h4>
+                            <p class="text-xs text-gray-400 mt-1">Bukan sekadar rutinitas, melainkan rutinitas harian yang membawa kebahagiaan dan kepuasan kuliner.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gorga Cultural Philosophy Section -->
+    <section id="gorga-story" class="py-16 relative overflow-hidden bg-batak-red/10 border-y border-batak-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <div class="md:col-span-4 text-center md:text-left">
+                    <span class="text-batak-gold text-xs font-bold tracking-widest uppercase">Etnisitas & Identitas</span>
+                    <h3 class="font-serif text-3xl font-bold text-white mt-1">
+                        Filosofi Gorga Batak
+                    </h3>
+                    <p class="text-xs text-gray-300 mt-2">
+                        Simanjuntak mengalir dalam darah, Gorga terukir dalam estetika. Simbol keharmonisan, keberanian, dan perlindungan.
+                    </p>
+                </div>
+
+                <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Gorga Motif 1 -->
+                    <div class="p-4 rounded-xl glass-card text-center space-y-2 border-t-2 border-batak-gold">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-batak-gold/20 flex items-center justify-center text-batak-gold">
+                            <i class="fa-solid fa-sun text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">Gorga Simeol-meol</h4>
+                        <p class="text-[11px] text-gray-400">Lambang kegembiraan dan keluwesan dalam meracik resep kuliner.</p>
+                    </div>
+
+                    <!-- Gorga Motif 2 -->
+                    <div class="p-4 rounded-xl glass-card text-center space-y-2 border-t-2 border-batak-red">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-batak-red/20 flex items-center justify-center text-batak-red">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">Gorga Paung</h4>
+                        <p class="text-[11px] text-gray-400">Simbol wibawa, kewaspadaan, serta ketekunan dalam menjaga kebersihan dapur.</p>
+                    </div>
+
+                    <!-- Gorga Motif 3 -->
+                    <div class="p-4 rounded-xl glass-card text-center space-y-2 border-t-2 border-batak-copper">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-batak-copper/20 flex items-center justify-center text-batak-copper">
+                            <i class="fa-solid fa-infinity text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">Tiga Warna Batak</h4>
+                        <p class="text-[11px] text-gray-400">Merah (Keberanian), Hitam (Keteguhan), dan Putih/Emas (Kesucian & Kemuliaan).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe & Blog Showcase Section -->
+    <section id="recipes" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header & Search/Filter Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <div class="flex items-center gap-2 text-batak-gold text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <span>Koleksi Dapur Renata</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-1">
+                    Resep Viral & Catatan Kuliner
+                </h2>
+                <p class="text-gray-400 text-sm mt-2">Telusuri resep masakan hits terkini dan masakan kreasi spesial Chef Renata.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2" id="filter-buttons">
+                <button data-filter="all" class="px-4 py-2 rounded-full text-xs font-semibold bg-batak-gold text-batak-dark filter-btn active transition">
+                    Semua
+                </button>
+                <button data-filter="trending" class="px-4 py-2 rounded-full text-xs font-semibold glass-card text-gray-300 hover:text-batak-gold filter-btn transition">
+                    <i class="fa-solid fa-fire text-batak-red mr-1"></i> Viral Trending
+                </button>
+                <button data-filter="batak" class="px-4 py-2 rounded-full text-xs font-semibold glass-card text-gray-300 hover:text-batak-gold filter-btn transition">
+                    <i class="fa-solid fa-bowl-food text-batak-gold mr-1"></i> Batak Fusion
+                </button>
+                <button data-filter="tips" class="px-4 py-2 rounded-full text-xs font-semibold glass-card text-gray-300 hover:text-batak-gold filter-btn transition">
+                    <i class="fa-solid fa-lightbulb text-batak-copper mr-1"></i> Kitchen Tips
+                </button>
+            </div>
+        </div>
+
+        <!-- Recipes Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recipes-grid">
+            <!-- Dynamic Recipe Cards Populated via JavaScript -->
+        </div>
+
+    </section>
+
+    <!-- Interactive Recipe Modal Drawer -->
+    <div id="recipe-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card bg-batak-dark/95 w-full max-w-3xl rounded-3xl border border-batak-gold/40 overflow-hidden max-h-[90vh] flex flex-col shadow-2xl relative animate-fade-in">
+            
+            <!-- Modal Header Image -->
+            <div class="relative h-56 sm:h-72 w-full overflow-hidden">
+                <img id="modal-img" src="" alt="Recipe Image" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-batak-dark via-batak-dark/40 to-transparent"></div>
+                
+                <!-- Close Button -->
+                <button id="close-modal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-batak-red flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+
+                <!-- Modal Category Badge -->
+                <span id="modal-category" class="absolute bottom-4 left-6 px-3 py-1 bg-batak-red text-white text-xs font-bold rounded-full uppercase tracking-wider"></span>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+                <div>
+                    <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-white"></h3>
+                    <p id="modal-desc" class="text-gray-300 text-sm mt-2 leading-relaxed"></p>
+                </div>
+
+                <!-- Recipe Quick Stats -->
+                <div class="grid grid-cols-3 gap-4 py-3 px-4 glass-card rounded-2xl text-center text-xs">
+                    <div>
+                        <span class="text-gray-400 block"><i class="fa-regular fa-clock text-batak-gold mr-1"></i> Waktu</span>
+                        <span id="modal-time" class="font-bold text-white"></span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block"><i class="fa-solid fa-signal text-batak-red mr-1"></i> Tingkat</span>
+                        <span id="modal-level" class="font-bold text-white"></span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block"><i class="fa-solid fa-users text-batak-copper mr-1"></i> Porsi</span>
+                        <span id="modal-servings" class="font-bold text-white"></span>
+                    </div>
+                </div>
+
+                <!-- Ingredients & Steps Tabs / Lists -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Ingredients -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-batak-gold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i> Bahan-bahan:
+                        </h4>
+                        <ul id="modal-ingredients" class="space-y-2 text-xs text-gray-300"></ul>
+                    </div>
+
+                    <!-- Steps -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-batak-gold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-utensils"></i> Langkah Pembuatan:
+                        </h4>
+                        <ol id="modal-steps" class="space-y-2 text-xs text-gray-300 list-decimal pl-4"></ol>
+                    </div>
+                </div>
+
+                <!-- Modal Footer Note -->
+                <div class="p-4 rounded-xl bg-batak-red/20 border border-batak-red/40 text-xs text-gray-300 flex items-center gap-3">
+                    <i class="fa-solid fa-heart text-batak-gold text-xl shrink-0"></i>
+                    <span>Resep diuji langsung di Dapur Chef Renata. Jangan ragu tag <strong>@renatasimnjntk_</strong> jika recook ya!</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Instagram Call to Action Banner -->
+    <section class="py-16 bg-gradient-to-r from-batak-dark via-batak-red/30 to-batak-dark relative">
+        <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+            <div class="inline-block p-4 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-batak-gold text-white text-3xl shadow-xl">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+                Ikuti Keseharian Masak di Instagram
+            </h2>
+            
+            <p class="text-gray-300 text-sm max-w-xl mx-auto">
+                Dapatkan update resep video pendek, stories dapur harian, dan keseruan masak menu viral terbaru bersama <span class="text-batak-gold font-semibold">@renatasimnjntk_</span>.
+            </p>
+
+            <div>
+                <a href="https://www.instagram.com/renatasimnjntk_?stkn=cDA2NDhidWx1ZzNm" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-batak-dark font-bold text-sm shadow-xl hover:bg-batak-gold hover:text-white transition transform hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram text-xl text-pink-600"></i>
+                    <span>Kunjungi @renatasimnjntk_</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-batak-dark border-t border-batak-gold/20 pt-12 pb-8 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <!-- Brand Info -->
+                <div class="flex items-center gap-3 text-center md:text-left">
+                    <div class="w-8 h-8 rounded-full bg-batak-gold text-batak-dark font-bold flex items-center justify-center">
+                        CR
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm">Meiriska Renata Br.Simanjuntak</p>
+                        <p class="text-[10px] text-batak-gold">Personal Culinary Blog • CHEF RENATA</p>
+                    </div>
+                </div>
+
+                <!-- Footer Nav -->
+                <div class="flex flex-wrap justify-center gap-6 text-gray-400">
+                    <a href="#home" class="hover:text-batak-gold transition">Beranda</a>
+                    <a href="#about" class="hover:text-batak-gold transition">Tentang Chef</a>
+                    <a href="#recipes" class="hover:text-batak-gold transition">Resep</a>
+                    <a href="#gorga-story" class="hover:text-batak-gold transition">Gorga Batak</a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center md:text-right">
+                    <p>&copy; 2026 Chef Renata. All Rights Reserved.</p>
+                    <p class="text-[10px] text-gray-500 mt-0.5">Dibuat dengan Cita Rasa & Sentuhan Gorga Batak</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ==========================================================================
+           1. Recipe Data Store (Updated with specific user recipes)
+           ========================================================================== */
+        const recipeData = [
+            {
+                id: 1,
+                title: "Seblak Pedas Gurih Khas Renata",
+                category: "trending",
+                categoryName: "Viral & Pedas",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu27dD_6lisZs-dlu_nJfhJW2CaPp5P8ipsStIG9eZNQ&s=10",
+                description: "Seblak khas kekinian dengan cita rasa pedas gurih nan menggugah selera racikan resep Chef Renata.",
+                time: "20 Menit",
+                level: "Mudah",
+                servings: "2 Porsi",
+                ingredients: [
+                    "100 gr kerupuk mawar/sumber mentah (rebus matang)",
+                    "1 butir telur ayam",
+                    "3 siung kencur & 2 siung bawang putih",
+                    "8-10 buah cabai rawit merah & keriting",
+                    "Bakso/sosis potong secukupnya",
+                    "Garam, gula, & kaldu bubuk secukupnya"
+                ],
+                steps: [
+                    "Haluskan kencur, bawang putih, dan cabai rawit hingga wangi.",
+                    "Tumis bumbu halus dengan sedikit minyak hingga matang sempurna.",
+                    "Tambahkan air secukupnya, orak-arik telur hingga berserabut.",
+                    "Masukkan kerupuk yang telah direbus lembek, bakso, dan sosis.",
+                    "Bumbui dengan penyedap, masak hingga kuah mengental dan sajikan hangat."
+                ]
+            },
+            {
+                id: 2,
+                title: "Ikan Mas Arsik Khas Batak",
+                category: "batak",
+                categoryName: "Makanan Khas Batak",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFylpfctPeYG3YfLucTs_GVDEcaqqCVcqQKA3JteIJpjtu1sC5xwmlZIGy&s=10",
+                description: "Masakan tradisional khas Batak Toba dengan bumbu andaliman dan asam gelugur yang kaya rempah otentik.",
+                time: "75 Menit",
+                level: "Sedang",
+                servings: "4 Porsi",
+                ingredients: [
+                    "1 kg Ikan mas segar (bersihkan, biarkan utuh)",
+                    "10 gr Andaliman segar, haluskan",
+                    "10 batang serai & 100 gr bawang Batak (lokio)",
+                    "3 buah asam gelugur & rias/kecombrang",
+                    "Kunyit, jahe, lengkuas, kemiri, bawang merah, & bawang putih"
+                ],
+                steps: [
+                    "Giling halus kunyit, jahe, lengkuas, kemiri, bawang, dan andaliman.",
+                    "Susun serai, kecombrang, dan kacang panjang di dasar wajan sebagai alas agar ikan tidak gosong.",
+                    "Letakkan ikan mas di atas susunan rempah, tuang bumbu halus dan air hingga terendam.",
+                    "Masak dengan api kecil hingga air menyusut dan bumbu meresap sempurna hingga mengering.",
+                    "Sajikan Ikan Mas Arsik hangat khas Simanjuntak."
+                ]
+            },
+            {
+                id: 3,
+                title: "Jus Alpukat Cokelat Special",
+                category: "drinks",
+                categoryName: "Minuman Segar",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbdHllpLGiyOLnsVKJO6elovIczC5E9aAa0TA21E0TRQ&s=10",
+                description: "Minuman alpukat kocok/jus segar dengan lelehan cokelat kental manis yang manis, creamy, dan gurih.",
+                time: "10 Menit",
+                level: "Sangat Mudah",
+                servings: "2 Gelas",
+                ingredients: [
+                    "2 buah alpukat mentega matang",
+                    "200 ml susu cair UHT dingin",
+                    "3 sendok makan kental manis putih",
+                    "Susu kental manis cokelat secukupnya (untuk hiasan gelas)",
+                    "Es batu secukupnya"
+                ],
+                steps: [
+                    "Kerok daging buah alpukat mentega segar.",
+                    "Blender alpukat bersama susu UHT, kental manis putih, dan es batu hingga halus lembut (smooth).",
+                    "Hias dinding gelas saji dengan hiasan ulir kental manis cokelat.",
+                    "Tuang jus alpukat ke dalam gelas dan tambahkan topping potongan alpukat/cokelat di atasnya."
+                ]
+            }
+        ];
+
+        /* ==========================================================================
+           2. Render Recipes Grid Function
+           ========================================================================== */
+        function renderRecipes(filter = 'all') {
+            const grid = document.getElementById('recipes-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? recipeData 
+                : recipeData.filter(item => item.category === filter);
+
+            filtered.forEach(recipe => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-3xl overflow-hidden border border-batak-gold/20 hover:border-batak-gold transition duration-500 group flex flex-col h-full shadow-lg hover:shadow-batak-red/20";
+                
+                card.innerHTML = `
+                    <div class="relative h-56 w-full overflow-hidden">
+                        <img src="${recipe.image}" alt="${recipe.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/D4AF37?text=${encodeURIComponent(recipe.title)}';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-batak-dark via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-batak-dark/80 backdrop-blur-md border border-batak-gold/40 text-batak-gold text-[10px] font-bold rounded-full uppercase tracking-wider">
+                            ${recipe.categoryName}
+                        </span>
+                    </div>
+
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-batak-gold transition line-clamp-1">
+                                ${recipe.title}
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">
+                                ${recipe.description}
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between text-[11px] text-gray-400">
+                            <span class="flex items-center gap-1">
+                                <i class="fa-regular fa-clock text-batak-gold"></i> ${recipe.time}
+                            </span>
+                            <button onclick="openRecipeModal(${recipe.id})" 
+                                    class="px-4 py-2 rounded-full bg-batak-red/30 hover:bg-batak-red text-batak-cream hover:text-white font-semibold transition border border-batak-red/50 flex items-center gap-1.5">
+                                <span>Lihat Resep</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        /* Filter Event Listeners */
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-batak-gold', 'text-batak-dark', 'active');
+                    b.classList.add('glass-card', 'text-gray-300');
+                });
+                
+                const current = e.currentTarget;
+                current.classList.remove('glass-card', 'text-gray-300');
+                current.classList.add('bg-batak-gold', 'text-batak-dark', 'active');
+
+                const filter = current.getAttribute('data-filter');
+                renderRecipes(filter);
+            });
+        });
+
+        /* ==========================================================================
+           3. Modal Interactive Logic
+           ========================================================================== */
+        function openRecipeModal(id) {
+            const recipe = recipeData.find(r => r.id === id);
+            if (!recipe) return;
+
+            document.getElementById('modal-img').src = recipe.image;
+            document.getElementById('modal-title').innerText = recipe.title;
+            document.getElementById('modal-category').innerText = recipe.categoryName;
+            document.getElementById('modal-desc').innerText = recipe.description;
+            document.getElementById('modal-time').innerText = recipe.time;
+            document.getElementById('modal-level').innerText = recipe.level;
+            document.getElementById('modal-servings').innerText = recipe.servings;
+
+            // Ingredients
+            const ingList = document.getElementById('modal-ingredients');
+            ingList.innerHTML = recipe.ingredients.map(ing => `
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-batak-gold text-[10px] mt-1 shrink-0"></i>
+                    <span>${ing}</span>
+                </li>
+            `).join('');
+
+            // Steps
+            const stepsList = document.getElementById('modal-steps');
+            stepsList.innerHTML = recipe.steps.map(step => `
+                <li class="mb-1 leading-relaxed">${step}</li>
+            `).join('');
+
+            document.getElementById('recipe-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('recipe-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        /* Close modal on outside click */
+        document.getElementById('recipe-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'recipe-modal') {
+                document.getElementById('recipe-modal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        /* Mobile Menu Toggle */
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        /* Navbar Scroll Background Effect */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-card', 'shadow-2xl', 'border-b', 'border-batak-gold/20');
+            } else {
+                nav.classList.remove('glass-card', 'shadow-2xl', 'border-b', 'border-batak-gold/20');
+            }
+        });
+
+        /* ==========================================================================
+           4. Three.js 3D Background Interactive Canvas (Kitchen Tools + Gorga Geometry)
+           ========================================================================== */
+        function init3DCanvas() {
+            const container = document.getElementById('canvas-container');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 15;
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+
+            const pointLight = new THREE.PointLight(0xd4af37, 2, 50);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+
+            const redLight = new THREE.PointLight(0x9e2a2b, 2, 50);
+            redLight.position.set(-10, -10, 5);
+            scene.add(redLight);
+
+            // Floating Group
+            const mainGroup = new THREE.Group();
+            scene.add(mainGroup);
+
+            // 1. Central Metallic Gorga Ring Motif (Torus Knot)
+            const ringGeo = new THREE.TorusKnotGeometry(3.5, 0.4, 120, 16, 2, 3);
+            const ringMat = new THREE.MeshStandardMaterial({
+                color: 0xd4af37,
+                metalness: 0.8,
+                roughness: 0.2,
+                wireframe: true
+            });
+            const gorgaRing = new THREE.Mesh(ringGeo, ringMat);
+            mainGroup.add(gorgaRing);
+
+            // 2. Kitchenware Floating Geometry Models (3D Whisk / Spatula / Spices Shapes)
+            const items = [];
+            
+            // Generate Spatula / Rolling Pin Cylindrical shapes
+            const utensilGeo = new THREE.CylinderGeometry(0.1, 0.2, 4, 16);
+            const goldMat = new THREE.MeshStandardMaterial({ color: 0xc86d51, metalness: 0.5, roughness: 0.3 });
+            
+            for (let i = 0; i < 8; i++) {
+                const utensil = new THREE.Mesh(utensilGeo, goldMat);
+                utensil.position.set(
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 15,
+                    (Math.random() - 0.5) * 10
+                );
+                utensil.rotation.x = Math.random() * Math.PI;
+                utensil.rotation.y = Math.random() * Math.PI;
+                mainGroup.add(utensil);
+                items.push(utensil);
+            }
+
+            // 3. Floating Spice Particles (Golden / Red Particles)
+            const particleCount = 120;
+            const particleGeo = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 30;
+                positions[i + 1] = (Math.random() - 0.5) * 30;
+                positions[i + 2] = (Math.random() - 0.5) * 20;
+            }
+
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particleMat = new THREE.PointsMaterial({
+                color: 0xd4af37,
+                size: 0.15,
+                transparent: true,
+                opacity: 0.8
+            });
+            const particles = new THREE.Points(particleGeo, particleMat);
+            mainGroup.add(particles);
+
+            // Interactive Mouse Movement
+            let mouseX = 0;
+            let mouseY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            });
+
+            // Touch support for mobile
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+                    mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+                }
+            });
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                gorgaRing.rotation.x += 0.005;
+                gorgaRing.rotation.y += 0.008;
+
+                items.forEach((item, idx) => {
+                    item.rotation.x += 0.01 * (idx % 2 === 0 ? 1 : -1);
+                    item.rotation.y += 0.01;
+                });
+
+                particles.rotation.y += 0.001;
+
+                // Parallax Smooth Interpolation
+                mainGroup.rotation.y += (mouseX * 0.3 - mainGroup.rotation.y) * 0.05;
+                mainGroup.rotation.x += (-mouseY * 0.3 - mainGroup.rotation.x) * 0.05;
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Window Resize Listener
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+        /* Initialize on Window Load */
+        window.onload = function () {
+            renderRecipes('all');
+            init3DCanvas();
+        };
+    </script>
+</body>
+</html>
